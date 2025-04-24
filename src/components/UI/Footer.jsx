@@ -72,7 +72,7 @@ export default function Footer() {
       <div className="flex flex-col lg:flex-row lg:justify-between" >
         <div className=" flex font-bold ml-8 gap-2  text-xl items-center" >
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             width={500}
             height={500}
             alt="Picture of the author"

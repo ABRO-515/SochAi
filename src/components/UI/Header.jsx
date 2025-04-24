@@ -12,7 +12,7 @@ export default function Header() {
                     </ul>
                     <div className=" flex font-bold  text-xl items-center" >
                         <Image
-                            src="/logo.png"
+                            src="/logo.webp"
                             width={500}
                             height={500}
                             alt="Picture of the author"
