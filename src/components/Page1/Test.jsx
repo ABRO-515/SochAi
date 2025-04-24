@@ -1,82 +1,60 @@
-// pages/index.js
-import Image from "next/image";
+"use client"
+import { useEffect, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-export default function Home() {
-    const cards = [
-        {
-            title: "SochAi",
-            subtitle: "From Parenting Hacks To Daily Life Fixes",
-            imageSrc: "/card1.png", // Add this image to public/
-            tags: ["Parenting", "Health / Wellness", "DIY", "Deep Jugaar"],
-        },
-        {
-            title: "SochAi",
-            subtitle: "Ideas to Make Life Simpler",
-            imageSrc: "/images/Iphone 14.png",
-            tags: ["Life Tips", "Tech Fixes", "Smart Hacks"],
-        },
-        {
-            title: "SochAi",
-            subtitle: "Community Driven Knowledge",
-            imageSrc: "/images/Iphone 14.png",
-            tags: ["Explore", "Share", "Discover"],
-        },
-    ];
+const cardsData = [
+  'Card 1', 'Card 2', 'Card 3', 'Card 4', 'Card 5',
+  'Card 6', 'Card 7', 'Card 8', 'Card 9', 'Card 10'
+];
 
-    return (
-        <main className="min-h-screen bg-gray-100 py-10 px-4">
+const randomX = () => Math.floor(Math.random() * 90) + 5 + '%';
 
-            <div className="bg-[#0D6DD5] min-h-[60vh] rounded-[25px] mx-3 my-24" >
-                <h2 className="text-white py-16 text-center text-4xl md:text-5xl font-light SF-Pro-Display-Regular italic mb-12">How&nbsp;
-                    <span className="SF-Pro-Bold not-italic" > Soch</span>
-                    <span className="text-red-500 SF-Pro-Bold not-italic" >Ai </span> Works </h2>
+export default function ShowerCards() {
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ triggerOnce: true });
+  const [positions, setPositions] = useState([]);
 
+  useEffect(() => {
+    // Generate random X positions for cards once
+    setPositions(cardsData.map(() => randomX()));
+  }, []);
 
-                <div className="grid grid-cols-1 lg:grid-cols-3" >
-                    {/* whole card*/}
-                    <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {cards.map((card, index) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition duration-300"
-                            >
-                                <div className="bg-black text-white p-4">
-                                    <h2 className="text-xl font-bold">
-                                        Ask <span className="text-blue-400">SochAi</span> Anything
-                                    </h2>
-                                    <p className="text-sm mt-1">{card.subtitle}</p>
-                                </div>
+  useEffect(() => {
+    if (inView) {
+      controls.start(i => ({
+        y: 0,
+        opacity: 1,
+        transition: {
+          delay: i * 0.15,
+          duration: 5,
+          bounce: 0.3,
+          type: 'spring'
+        }
+      }));
+    }
+  }, [inView]);
 
-                                <div className="relative h-64">
-                                    <Image
-                                        src={card.imageSrc}
-                                        alt={card.title}
-                                        layout="fill"
-                                        objectFit="cover"
-                                    />
-                                </div>
-
-                                <div className="p-4">
-                                    <p className="text-lg font-semibold text-center">What can I help with?</p>
-                                    <div className="flex flex-wrap justify-center gap-2 mt-3">
-                                        {card.tags.map((tag, i) => (
-                                            <span
-                                                key={i}
-                                                className="text-xs bg-gray-200 px-3 py-1 rounded-full"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-        </main>
-
-
-    );
+  return (
+    <div ref={ref} className="relative h-screen overflow-hidden bg-blue-500 flex justify-center items-end">
+      <h1>Hello This is your boy</h1>
+      <div></div>
+      {cardsData.map((text, i) => (
+        <motion.div
+          key={i}
+          custom={i}
+          initial={{ y: -200, opacity: 0 }}
+          animate={controls}
+          className="absolute p-4 rounded-xl shadow-lg bg-white text-black"
+          style={{
+            bottom: 40,
+            left: positions[i] || '50%',
+            transform: 'translateX(-50%)',
+          }}
+        >
+          {text}
+        </motion.div>
+      ))}
+    </div>
+  );
 }

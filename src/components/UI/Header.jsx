@@ -16,7 +16,7 @@ export default function Header() {
                             width={500}
                             height={500}
                             alt="Picture of the author"
-                            className="h-[3.5rem] lg:mr-4 mr-2 w-full max-w-[6rem] py-3"
+                            className="h-[3.5rem] lg:mr-4  w-full max-w-[6rem] py-3"
                         />
                         <h3 className="SF-Pro-Display-Regular md:text-2xl text-xl" >Soch<span className="  text-red-500" >Ai</span> </h3>
                     </div>

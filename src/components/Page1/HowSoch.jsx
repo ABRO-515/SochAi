@@ -26,17 +26,17 @@ export default function HowSoch() {
 
   return (
     <main className="min-h-[50vh] w-full">
-      <div className="relative xl:bg-[#252525] bg-[#0D6DD5] min-h-[60vh] rounded-[25px] mx-3 mt-6 overflow-hidden">
+      <div className="relative xl:bg-gradient-to-b  from-[#252525] via-[#091521] to-[#252525] bg-[#0D6DD5] min-h-[60vh] rounded-[25px] mx-3 xl:mx-0  mt-6 overflow-hidden">
         {/* Special Low Z-Index Gradient Background */}
         <div
-          className="absolute bottom-0 left-0 w-full h-1/2 z-[-10]"
+          className="absolute bottom-0  right-[2px] w-full h-1/2 z-[-10]"
           style={{
             background: "radial-gradient(circle at center, #0C1A2F 0%, #0C1A2F 100%)",
           }}
         />
 
         {/* Optional top half blue for xl */}
-        <div className="hidden xl:block absolute top-0 left-0 w-full h-1/2 bg-[#0D6DD5] z-0 rounded-[25px]" />
+        <div className="hidden xl:block absolute top-0 left-0  w-full h-1/2 bg-[#0D6DD5] mx-3 z-0 rounded-[25px]" />
 
         <h2 className="relative z-10 text-white pt-16 text-center text-4xl md:text-5xl font-light SF-Pro-Display-Regular italic mb-12">
           How&nbsp;
@@ -49,7 +49,7 @@ export default function HowSoch() {
             <div
               className={`bg-white group hover:bg-red-500 cursor-pointer transition-colors duration-300 rounded-[20px] mx-3 xl:mx-10 ${item.marginBottom}`}
               key={index}
-              style={{  boxShadow: "0 4px 20px rgba(13, 109, 213, 0.4)" }}
+             
             >
               <h2 className="text-black group-hover:text-white transition-all duration-300 mt-11 text-center text-3xl md:text-5xl xl:text-2xl font-bold SF-Pro-Display-Regular">
                 {item.firstLine}

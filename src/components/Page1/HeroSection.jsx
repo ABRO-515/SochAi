@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Link as ScrollLink } from 'react-scroll';
+import ModelViewer from "../Model/ModelViewer";
 
 
 export default function HeroSection() {
@@ -59,7 +60,7 @@ export default function HeroSection() {
                                 className="h-[2rem] w-[6.5rem]  md:h-[2.6rem] md:w-[7.9rem] lg:h-[2.2rem] lg:w-[7rem]"
                                 width={500}
                                 height={500}
-                                alt="App Store"
+                                alt="Google Play"
                             />
 
                         </div  >
@@ -116,13 +117,11 @@ export default function HeroSection() {
                 {/* bot and iphoneHand img */}
                 <div className="flex justify-between w-full  " >
                     {/* Bot  */}
-                    <Image
-                        src="/images/bot.webp"
-                        className="h-full max-w-[40vw] object-contain md:max-w-[33vw] lg:md:max-w-[40vw] max-h-[20vh] lg:max-h-[39vh]  left-0  absolute bottom-0 w-full"
-                        width={1500}
-                        height={1500}
-                        alt="bot "
+                    <ModelViewer
+                        modelPath="/models/bot.gltf"
+                        className="h-full max-w-[40vw] md:max-w-[33vw] lg:max-w-[40vw] max-h-[20vh] lg:max-h-[39vh] left-0 absolute bottom-0 w-full"
                     />
+
 
                     {/* Iphone in Hand  */}
                     <Image
@@ -144,16 +143,16 @@ export default function HeroSection() {
 
                 {/* NEXT sECTION   */}
                 <ScrollLink to="whySoch" smooth={true} duration={450} >
-                <Image
-                    src="/images/nextSection.webp"
-                    className="h-full w-full cursor-pointer max-w-[8vw] max-h-[8vh] hidden 2xl:block absolute bottom-12 left-1/2 transform -translate-x-1/2 object-contain"
-                    width={1500}
-                    height={1500}
-                    alt="Next Section "
-                />
-           
+                    <Image
+                        src="/images/nextSection.webp"
+                        className="h-full w-full cursor-pointer max-w-[8vw] max-h-[8vh] hidden 2xl:block absolute bottom-12 left-1/2 transform -translate-x-1/2 object-contain"
+                        width={1500}
+                        height={1500}
+                        alt="Next Section "
+                    />
 
-           </ScrollLink>
+
+                </ScrollLink>
 
 
 
